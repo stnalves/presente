@@ -21,6 +21,12 @@ const imagens = [
 
 let indice = 0;
 
+const imagensPrecarregadas = fotos.map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
+
 function trocarFotos() {
 
     imagens.forEach(img => {
@@ -31,9 +37,14 @@ function trocarFotos() {
 
         indice++;
 
-        imagens[0].src = fotos[indice % fotos.length];
-        imagens[1].src = fotos[(indice + 1) % fotos.length];
-        imagens[2].src = fotos[(indice + 2) % fotos.length];
+        imagens[0].src =
+            fotos[indice % fotos.length];
+
+        imagens[1].src =
+            fotos[(indice + 1) % fotos.length];
+
+        imagens[2].src =
+            fotos[(indice + 2) % fotos.length];
 
         imagens.forEach(img => {
             img.classList.remove("trocando");

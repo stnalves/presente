@@ -204,11 +204,17 @@ h1 span {
 }
 
 .foto img {
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1.25;
+
+    object-fit: cover;
+
     opacity: 1;
 
-    transition:
-        opacity 0.5s ease,
-        transform 0.5s ease;
+    transition: opacity 0.5s ease;
 }
 
 .foto img.trocando {
