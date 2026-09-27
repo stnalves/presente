@@ -1,0 +1,437 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at 20% 20%, #f6f0fa 0, transparent 30%),
+        radial-gradient(circle at 80% 80%, #e6dcf5 0, transparent 30%),
+        #fbf8fc;
+
+    color: #3d2b4f;
+
+    font-family: "Poppins", sans-serif;
+
+    overflow-x: hidden;
+}
+
+
+/* =========================
+   PÁGINA
+========================= */
+
+.pagina {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 70px 20px 100px;
+
+    gap: 65px;
+}
+
+
+/* =========================
+   MENSAGEM
+========================= */
+
+.mensagem {
+    width: min(100%, 600px);
+
+    text-align: center;
+}
+
+.coracao {
+    display: block;
+    color: #9b5db8; /* Roxo vibrante */
+    font-size: 28px;
+    margin-bottom: 18px;
+    animation: pulsar 2s infinite;
+}
+
+.pequeno {
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: #876d9c; /* Lilás acinzentado */
+    margin-bottom: 15px;
+}
+
+h1 {
+    font-family: "DM Serif Display", serif;
+    font-size: clamp(46px, 12vw, 72px);
+    font-weight: 400;
+    line-height: 1.05;
+    color: #351f47; /* Roxo bem escuro */
+}
+
+h1 span {
+    color: #924ca6; /* Roxo médio */
+}
+
+.texto {
+    max-width: 500px;
+    margin: 28px auto 0;
+    font-size: 15px;
+    line-height: 1.9;
+    color: #624a70; /* Roxo escuro suavizado */
+}
+
+.assinatura {
+    margin-top: 25px;
+    font-family: "DM Serif Display", serif;
+    font-size: 23px;
+    color: #924ca6; /* Roxo médio */
+}
+
+/* =========================
+   ROLO FOTOGRÁFICO
+========================= */
+
+.foto-container {
+    width: min(330px, 85vw);
+
+    display: grid;
+
+    grid-template-columns: 32px minmax(0, 1fr) 32px;
+
+    background: #111;
+
+    box-shadow:
+        0 25px 60px rgba(73, 46, 53, 0.25);
+
+    transform: none;
+
+    padding: 0;
+
+    overflow: hidden;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   LATERAIS DO FILME
+========================= */
+
+.perfuracao {
+    position: relative;
+    background-color: #111;
+    border: 0; 
+    background-image:
+        repeating-linear-gradient(
+            to bottom,
+            transparent 0,
+            transparent 9px,
+            #fbf8fc 9px,
+            #fbf8fc 22px,
+            transparent 22px,
+            transparent 32px
+        );
+    box-sizing: border-box;
+}
+
+/* =========================
+   BORDA ENTRE FUROS E FOTOS
+========================= */
+
+.esquerda {
+    border-left: 8px solid #111;  /* Borda EXTERNA: empurra o furo para dentro */
+    border-right: 3px solid #111; /* Borda INTERNA: espaço entre furo e foto */
+}
+
+.direita {
+    border-right: 8px solid #111; /* Borda EXTERNA: empurra o furo para dentro */
+    border-left: 3px solid #111;  /* Borda INTERNA: espaço entre furo e foto */
+}
+
+/* =========================
+   ÁREA DAS FOTOS
+========================= */
+
+.fotos {
+    display: flex;
+    flex-direction: column;
+    background: #111;
+
+    /* Zeramos as bordas aqui para não somar com as bordas da esquerda/direita */
+    border-left: 0;
+    border-right: 0;
+
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   FOTOS
+========================= */
+
+.foto {
+    position: relative;
+
+    width: 100%;
+
+    background: #111;
+
+    padding: 7px;
+
+    border-bottom: 7px solid #111;
+}
+
+.foto:last-child {
+    border-bottom: none;
+}
+
+.foto img {
+    display: block;
+
+    width: 100%;
+
+    aspect-ratio: 1 / 1.25;
+
+    object-fit: cover;
+}
+
+.foto img {
+    opacity: 1;
+
+    transition:
+        opacity 0.5s ease,
+        transform 0.5s ease;
+}
+
+.foto img.trocando {
+    opacity: 0;
+}
+
+/* =========================
+   DECORAÇÕES
+========================= */
+
+.decoracao {
+    position: fixed;
+    color: #cca3e5; /* Lilás claro */
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.coracao-1 {
+    top: 12%;
+    left: 7%;
+
+    font-size: 35px;
+
+    transform: rotate(-15deg);
+}
+
+.coracao-2 {
+    bottom: 15%;
+    left: 10%;
+
+    font-size: 22px;
+
+    transform: rotate(20deg);
+}
+
+.coracao-3 {
+    top: 15%;
+    right: 8%;
+
+    font-size: 28px;
+
+    transform: rotate(15deg);
+}
+
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+
+@keyframes pulsar {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .pagina {
+        padding: 55px 18px 80px;
+
+        gap: 55px;
+    }
+
+    .mensagem {
+        width: 100%;
+    }
+
+    .coracao {
+        font-size: 25px;
+
+        margin-bottom: 15px;
+    }
+
+    .pequeno {
+        font-size: 11px;
+
+        letter-spacing: 1.5px;
+    }
+
+    h1 {
+        font-size: clamp(42px, 13vw, 60px);
+    }
+
+    .texto {
+        font-size: 14px;
+
+        line-height: 1.8;
+
+        padding: 0 8px;
+    }
+
+    .assinatura {
+        font-size: 21px;
+    }
+
+    .foto-container {
+        width: min(290px, 82vw);
+
+        padding: 22px;
+    }
+
+    .filme {
+        gap: 18px;
+    }
+
+    .foto img {
+        aspect-ratio: 4 / 5;
+    }
+
+    .furinhos span {
+        width: 19px;
+        height: 9px;
+    }
+}
+
+
+/* =========================
+   CELULARES PEQUENOS
+========================= */
+
+@media (max-width: 380px) {
+
+    .pagina {
+        padding-top: 40px;
+
+        gap: 45px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .foto-container {
+        width: 260px;
+
+        padding: 19px;
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .pagina {
+        padding: 55px 18px 80px;
+        gap: 55px;
+    }
+
+    .mensagem {
+        width: 100%;
+    }
+
+    .coracao {
+        font-size: 25px;
+        margin-bottom: 15px;
+    }
+
+    .pequeno {
+        font-size: 11px;
+        letter-spacing: 1.5px;
+    }
+
+    h1 {
+        font-size: clamp(42px, 13vw, 60px);
+    }
+
+    .texto {
+        font-size: 14px;
+        line-height: 1.8;
+        padding: 0 8px;
+    }
+
+    .assinatura {
+        font-size: 21px;
+    }
+
+    .foto-container {
+        width: min(290px, 82vw);
+        padding: 0; /* <-- Correção: Zerado para não criar a borda preta grossa */
+        /* Opcional: se quiser que os furos fiquem um pouco menores no celular, 
+           você pode reajustar o grid aqui:
+           grid-template-columns: 24px minmax(0, 1fr) 24px; */
+    }
+
+    /* Nota: As classes .filme e .furinhos span foram removidas 
+       pois não existem na estrutura base do seu CSS atual */
+       
+    .foto img {
+        aspect-ratio: 4 / 5;
+    }
+}
+
+
+/* =========================
+   CELULARES PEQUENOS
+========================= */
+
+@media (max-width: 380px) {
+
+    .pagina {
+        padding-top: 40px;
+        gap: 45px;
+    }
+
+    h1 {
+        font-size: 42px;
+    }
+
+    .foto-container {
+        width: 260px;
+        padding: 0; /* <-- Correção: Zerado aqui também */
+    }
+}
